@@ -1,8 +1,7 @@
-
 use std::collections::HashMap;
 macro_rules! opcodes {
     ($($name: ident,$bytes: expr,$sname: expr),*) => {
-        
+
         $(
             #[allow(non_upper_case_globals)]
             pub const $name: &'static [u8] = &$bytes;
@@ -21,15 +20,13 @@ macro_rules! opcodes {
                 let mut map = HashMap::new();
                 $(
                     map.insert($sname.to_string(), $bytes.iter().map(|b| *b).collect::<Vec<u8>>());
-                )*  
+                )*
 
                 map
             };
         }
     };
 }
-
-
 
 opcodes! {
     add,[0x58],"add",
